@@ -1,0 +1,1 @@
+{"version":3,"file":"tradeSymbol.js","sourceRoot":"","sources":["../../src/models/tradeSymbol.ts"],"names":[],"mappings":"AAAA,MAAM,OAAO,WAAW;IAMtB,YACE,MAAc,EACd,IAAY,EACZ,YAAoB,EACpB,aAAqB;QAErB,qDAAqD;QACrD,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC;QACrB,IAAI,CAAC,IAAI,GAAG,IAAI,CAAC;QACjB,IAAI,CAAC,YAAY,GAAG,YAAY,CAAC;QACjC,IAAI,CAAC,aAAa,GAAG,aAAa,CAAC;IACrC,CAAC;CACF"}

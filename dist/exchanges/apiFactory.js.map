@@ -1,0 +1,1 @@
+{"version":3,"file":"apiFactory.js","sourceRoot":"","sources":["../../src/exchanges/apiFactory.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,SAAS,EAAE,MAAM,oBAAoB,CAAC;AAE/C,MAAM,OAAO,UAAU;IACrB,MAAM,CAAC,MAAM,CAAC,QAAgB;QAC5B,QAAQ,QAAQ,EAAE;YAChB,KAAK,QAAQ;gBACX,OAAO,IAAI,SAAS,EAAE,CAAC;YACzB,qCAAqC;YACrC;gBACE,MAAM,IAAI,KAAK,CAAC,uBAAuB,CAAC,CAAC;SAC5C;IACH,CAAC;CACF"}

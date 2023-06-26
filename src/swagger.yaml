@@ -1,0 +1,199 @@
+openapi: 3.0.0
+info:
+  title: Cumulative Delta API
+  description: API for calculating cumulative delta index and trades
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /exchange/{exchange}/delta/{symbol}:
+    get:
+      tags:
+        - Cumulative Delta Index
+      summary: Get cumulative delta index and trades
+      operationId: getCumulativeDeltaIndex
+      parameters:
+        - name: exchange
+          in: path
+          description: Exchange name
+          required: true
+          schema:
+            type: string
+        - name: symbol
+          in: path
+          description: Symbol name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CumulativeDeltaResponse'
+  /exchange/{exchange}/symbols/:
+    get:
+      tags:
+        - Symbols list
+      summary: Get full supported symbols list
+      operationId: getFullSymbolsList
+      parameters:
+        - name: exchange
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  symbols:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TradeSymbol'
+  /exchange/{exchange}/symbols/{market}:
+    get:
+      tags:
+        - Symbols list
+      summary: Get symbols list for a specific market
+      operationId: getMarketSymbolsList
+      parameters:
+        - name: exchange
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: market
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  symbols:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TradeSymbol'
+  /exchange/{exchange}/fills/{tradeType}:
+    get:
+      tags:
+        - Fills List
+      summary: Get fills list
+      operationId: getFills
+      parameters:
+        - name: exchange
+          in: path
+          description: Exchange name
+          required: true
+          schema:
+            type: string
+        - name: tradeType
+          in: path
+          description: Trade type (TRADE / MARGIN_TRADE)
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FillsListResponse'
+components:
+  schemas:
+    CumulativeDeltaResponse:
+      type: object
+      properties:
+        cumulativeDeltaIndex:
+          type: string
+        trades:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trade'
+    Trade:
+      type: object
+      properties:
+        sequence:
+          type: string
+        price:
+          type: string
+        size:
+          type: string
+        side:
+          type: string
+        time:
+          type: integer
+    SymbolsListResponse:
+      type: object
+      properties:
+        symbols:
+          type: array
+          items:
+            $ref: '#/components/schemas/TradeSymbol'
+    TradeSymbol:
+      type: object
+      properties:
+        symbol:
+          type: string
+        name:
+          type: string
+        baseCurrency:
+          type: string
+        quoteCurrency:
+          type: string
+    FillsListResponse:
+      type: object
+      properties:
+        fills:
+          type: array
+          items:
+            $ref: '#/components/schemas/Fill'
+    Fill:
+      type: object
+      properties:
+        symbol:
+          type: string
+        tradeId:
+          type: string
+        orderId:
+          type: string
+        counterOrderId:
+          type: string
+        side:
+          type: string
+        liquidity:
+          type: string
+        forceTaker:
+          type: string
+        price:
+          type: string
+        size:
+          type: string
+        funds:
+          type: string
+        fee:
+          type: string
+        feeRate:
+          type: string
+        feeCurrency:
+          type: string
+        stop:
+          type: string
+        type:
+          type: string
+        createdAt:
+          type: string
+        tradeType:
+          type: string
