@@ -1,9 +1,7 @@
-import * as express from "express";
+import express from "express";
 import Controller from "./interfaces/controller.interface";
 import * as swaggerUi from "swagger-ui-express";
-import * as swaggerJsdoc from "swagger-jsdoc";
 import * as YAML from "yamljs";
-import * as fs from "fs";
 import * as path from "path";
 
 class App {
@@ -23,7 +21,7 @@ class App {
   }
 
   private initializeSwagger() {
-    const swaggerFilePath = path.resolve(__dirname, "swagger.yaml");
+    const swaggerFilePath = path.resolve(__dirname, "../swagger.yaml");
     const swaggerDocument = YAML.load(swaggerFilePath);
 
     this.app.use("/api-docs", swaggerUi.serve);
